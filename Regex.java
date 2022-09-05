@@ -20,7 +20,7 @@ public class Regex {
 
         }
     }
-    public  void IsLastName(){
+    public  void isLastName(){
         Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
         Scanner sc = new Scanner(System.in);
         System.out.println("enter last name :");
@@ -36,6 +36,7 @@ public class Regex {
     public static void main(String[] args) {
         Regex regex = new Regex();
         regex.isFirstName();
+        regex.isLastName();
 
     }
 }
