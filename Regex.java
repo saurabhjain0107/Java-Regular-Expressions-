@@ -20,7 +20,7 @@ public class Regex {
 
         }
     }
-    public  void IsLastName(){
+    public  void isLastName(){
         Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
         Scanner sc = new Scanner(System.in);
         System.out.println("enter last name :");
@@ -33,9 +33,24 @@ public class Regex {
             System.out.println("last name is Invalid : ");
         }
     }
+    public void validEmailId(){
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+ ([.][a-zA-Z0-9]+)* @ [a-z]+ ([.][a-z])* ([.][a-z]+)$");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Email id :");
+        String email = sc.nextLine();
+        Matcher matcher = pattern.matcher(email);
+        if(matcher.matches()){
+            System.out.println("Valid Email Id");
+        }
+        else {
+            System.out.println("Invalid Email Id");
+        }
+    }
     public static void main(String[] args) {
         Regex regex = new Regex();
         regex.isFirstName();
+        regex.isLastName();
+        regex.validEmailId();
 
     }
 }
