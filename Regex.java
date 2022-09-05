@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
-    public void isFirstName() {
+    public void firstName() {
         Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter first name :");
@@ -20,7 +20,7 @@ public class Regex {
 
         }
     }
-    public  void isLastName(){
+    public  void lastName(){
         Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
         Scanner sc = new Scanner(System.in);
         System.out.println("enter last name :");
@@ -46,7 +46,7 @@ public class Regex {
             System.out.println("Invalid Email Id");
         }
     }
-    public  void isMobileNumber(){
+    public  void mobileNumber(){
         Pattern pattern = Pattern.compile("^[0-9]{2}\s[6-9][0-9]{9}$");
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Mobile number with country code :");
@@ -61,10 +61,10 @@ public class Regex {
     }
     public static void main(String[] args) {
         Regex regex = new Regex();
-        regex.isFirstName();
-        regex.isLastName();
+        regex.firstName();
+        regex.lastName();
         regex.validEmailId();
-        regex.isMobileNumber();
+        regex.mobileNumber();
 
     }
 }
