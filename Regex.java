@@ -20,6 +20,19 @@ public class Regex {
 
         }
     }
+    public  void IsLastName(){
+        Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter last name :");
+        String lastname = sc.nextLine();
+        Matcher matcher = pattern.matcher(lastname);
+        if(matcher.matches()){
+            System.out.println("last name in valid : ");
+        }
+        else{
+            System.out.println("last name is Invalid : ");
+        }
+    }
     public static void main(String[] args) {
         Regex regex = new Regex();
         regex.isFirstName();
