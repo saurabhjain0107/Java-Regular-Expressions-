@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
-    public void isFirstName() {
+    public void firstName() {
         Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter first name :");
@@ -22,7 +22,7 @@ public class Regex {
     }
     public static void main(String[] args) {
         Regex regex = new Regex();
-        regex.isFirstName();
+        regex.firstName();
 
     }
 }
