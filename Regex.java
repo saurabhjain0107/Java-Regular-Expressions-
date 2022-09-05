@@ -60,7 +60,7 @@ public class Regex {
         }
     }
     public void userPassword(){
-        Pattern pattern = Pattern.compile("^[a-z]{8,}$");
+        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$");
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter User Password :");
         String userPassword = sc.nextLine();
