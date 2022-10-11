@@ -1,84 +1,45 @@
 package com.bridgelabz;
-
-import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
 
-    public void firstName() {
-        Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter first name :");
-        String FirstName = sc.nextLine();
-        Matcher matcher = pattern.matcher(FirstName);
-        if (matcher.matches()) {
-            System.out.println("First name is valid : ");
+    public Validator name = (name) -> {
+        Pattern pattern = Pattern.compile("^[A-Z][a-zA-Z]{2,}");
+        boolean isValid = pattern.matcher(name).matches();
+        if (isValid) {
+            return true;
+        } else {
+            throw new  UserRegistrationException("Invalid Name => " + name);
         }
-        else {
-            System.out.println("First name is Invalid : ");
+    };
 
+    public Validator email = (email) -> {
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@([a-z1-9]+)([.][a-z]*)?(\\.[a-z]{2,})$");
+        boolean isValid = pattern.matcher(email).matches();
+        if (isValid) {
+            return true;
+        } else {
+            throw new  UserRegistrationException("Invalid email => " + email);
         }
-    }
-    public  void lastName(){
-        Pattern pattern = Pattern.compile("^[A-Z][a-z A-Z]{2,}");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter last name :");
-        String lastname = sc.nextLine();
-        Matcher matcher = pattern.matcher(lastname);
-        if(matcher.matches()){
-            System.out.println("last name in valid : ");
-        }
-        else{
-            System.out.println("last name is Invalid : ");
-        }
-    }
-    public void validEmailId(){
-        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+ ([.][a-zA-Z0-9]+)* @ [a-z]+ ([.][a-z])* ([.][a-z]+)$");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Email id :");
-        String email = sc.nextLine();
-        Matcher matcher = pattern.matcher(email);
-        if(matcher.matches()){
-            System.out.println("Valid Email Id");
-        }
-        else {
-            System.out.println("Invalid Email Id");
-        }
-    }
-    public  void mobileNumber(){
-        Pattern pattern = Pattern.compile("^[0-9]{2}\s[6-9][0-9]{9}$");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Mobile number with country code :");
-        String phoneNumber = sc.nextLine();
-        Matcher matcher = pattern.matcher(phoneNumber);
-        if(matcher.matches()){
-            System.out.println("phone number is valid :");
-        }
-        else{
-            System.out.println("phone number is Invalid :");
-        }
-    }
-    public void userPassword(){
-        Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter User Password :");
-        String userPassword = sc.nextLine();
-        Matcher matcher = pattern.matcher(userPassword);
-        if(matcher.matches()){
-            System.out.println("User Password is valid :");
-        }
-        else{
-            System.out.println("User Password is Invalid :");
-        }
-    }
-    public static void main(String[] args) {
-        Regex regex = new Regex();
-        regex.firstName();
-        regex.lastName();
-        regex.validEmailId();
-        regex.mobileNumber();
-        regex.userPassword();
+    };
 
-    }
+    public Validator mobileNo = (mobileNo) -> {
+        Pattern pattern = Pattern.compile("^[\\d]{2}\\s[\\d]{10}$");
+        boolean isValid = pattern.matcher(mobileNo).matches();
+        if (isValid) {
+            return true;
+        } else {
+            throw new  UserRegistrationException("Invalid Mobile Number => " + mobileNo);
+        }
+    };
+
+    public Validator password = (password) -> {
+        Pattern pattern = Pattern.compile("(?=.*[A-Z])(?=.*[^\\w\\d\\s:])(?=.*[0-9])[\\S]{8,}");
+        Boolean isValid = pattern.matcher(password).matches();
+        if (isValid) {
+            return true;
+        } else {
+            throw new  UserRegistrationException("Invalid Password => " + password);
+        }
+    };
 }
